@@ -6,11 +6,14 @@ pipeline {
                  git branch: 'main', url: 'https://github.com/ziobombo/KFonEKS.git'
             }
         }
-        stage('Plan') {
-            
+        stage('Init') {
             steps {
-                sh 'ls'
                 sh 'docker run --volume=$PWD/terraform:/config  hashicorp/terraform:latest -chdir=/config init -input=false'
+            }
+        }
+        stage('Apply') {
+            steps {
+                sh 'docker run --volume=$PWD/terraform:/config  hashicorp/terraform:latest -chdir=/config apply -input=false'
             }
         }
     }
