@@ -9,6 +9,7 @@ pipeline {
         stage('Plan') {
             
             steps {
+                sh 'ls'
                 sh 'docker run --volume=terraform:/config  hashicorp/terraform:latest -chdir=/config init -input=false'
             }
         }
