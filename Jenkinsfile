@@ -2,12 +2,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                 script{
-                        {
-                            git "https://github.com/ziobombo/KFonEKS.git"
-                        }
-                    }
-                }
+                 git branch: 'main', url: 'https://github.com/ziobombo/KFonEKS.git'
             }
         }
         stage('Plan') {
