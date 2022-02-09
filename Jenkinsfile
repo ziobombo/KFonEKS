@@ -10,7 +10,7 @@ pipeline {
             
             steps {
                 sh 'ls'
-                sh 'docker run --volume=terraform:/config  hashicorp/terraform:latest -chdir=/config init -input=false'
+                sh 'docker run --volume=$PWD/terraform:/config  hashicorp/terraform:latest -chdir=/config init -input=false'
             }
         }
     }
